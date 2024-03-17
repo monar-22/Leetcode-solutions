@@ -1,17 +1,12 @@
 class Solution {
     public int climbStairs(int n) {
-        int ways = 1;
-
-        for (int i = 1; i <= n / 2; i++) {
-            double sum = 1;
-
-            for (int j = i; j < 2 * i; j++) {
-                sum *= (double)(n - j) / (j - i + 1);
-            }
-
-            ways += sum;
-        }
-
-        return ways;
+    int prev1=1;
+    int prev=1;
+    for(int i=2;i<=n;i++){
+        int curr=prev1+prev;
+        prev1=prev;
+        prev=curr;
+    }
+        return prev;
     }
 }
